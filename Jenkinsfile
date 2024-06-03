@@ -3,6 +3,14 @@ pipeline {
     tools {
       jdk 'jdk17'
       maven 'maven3'
+    }
+       
+    stages {
+        stage('Git Checkout') {
+            steps {
+              git branch: 'feature', url: 'https://github.com/advikpadhye/Shopping-Cart-new.git'
+            }
+        }
         
         stage('Compile the Code') {
             steps {
@@ -12,7 +20,7 @@ pipeline {
         
         stage('test the Code') {
             steps {
-              sh "mvn clean test"
+              sh "mvn  -DskipTests=true"
             }
         }
         

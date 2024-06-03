@@ -1,12 +1,8 @@
 pipeline {
     agent any
-  
-    stages {
-        stage('Git Checkout') {
-            steps {
-              git branch: 'feature', url: 'https://github.com/advikpadhye/Shopping-Cart-new.git'
-            }
-        }
+    tools {
+      jdk 'jdk17'
+      maven 'maven3'
         
         stage('Compile the Code') {
             steps {
